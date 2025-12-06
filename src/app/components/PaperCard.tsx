@@ -1,6 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { isCompactAtom } from "./PaperGrid";
-import { atom, useAtom } from "jotai";
+import { useExam } from "../contexts/ExamContext";
 
 interface PaperCardProps {
   type: string;
@@ -11,8 +10,7 @@ interface PaperCardProps {
 }
 
 function PaperCard({ type, subject, paperName, year, url }: PaperCardProps) {
-
-  let [isCompact,] = useAtom(isCompactAtom)
+  const { isCompact } = useExam();
 
   function determineCategoryName(catName: string) {
     let title: string;

@@ -1,13 +1,11 @@
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { shareIsOpenAtom } from "../PaperGrid"
-import { selectionArrayAtom, examPaperListAtom } from "../Form"
+import { useDialogs } from "../../contexts/DialogContext";
+import { useExam } from "../../contexts/ExamContext";
 
 function ShareDialog() {
-  let [shareIsOpen, setShareIsOpen] = useAtom(shareIsOpenAtom);
-  let [selectionArray, setSelectionArray] = useAtom(selectionArrayAtom);
-  let [examList, setExamList] = useAtom(examPaperListAtom)
+  const { shareIsOpen, setShareIsOpen } = useDialogs();
+  const { selectionArray, examPaperList } = useExam();
 
   let shareUrl = `https://www.betterexams.ie?cert=${selectionArray[0]}&subject=${selectionArray[1]}&year=${selectionArray[2]}&lang=${selectionArray[3]}&level=${selectionArray[4]}`
 
@@ -52,8 +50,8 @@ function ShareDialog() {
   }
 
   function examListToString() {
-    return examList
-      .map((paper) => `(${determineCategoryName(paper[0])}) ${paper[2]}: ${paper[4]}`)
+    return examPaperList
+      .map((paper: string[]) => `(${determineCategoryName(paper[0])}) ${paper[2]}: ${paper[4]}`)
       .join('\n\n');
   }
 

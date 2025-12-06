@@ -1,11 +1,7 @@
-import { atom, useAtom } from "jotai";
-
-let aboutIsOpenAtom = atom(false);
-let contactIsOpenAtom = atom(false);
+import { useDialogs } from "../contexts/DialogContext";
 
 function Footer() {
-    let [aboutIsOpen, setAboutIsOpen] = useAtom(aboutIsOpenAtom);
-    let [contactIsOpen, setContactIsOpen] = useAtom(contactIsOpenAtom);
+    const { setAboutIsOpen, setContactIsOpen } = useDialogs();
 
     return (
         <footer className="flex flex-col items-center w-96 mt-10 lg:mt-0">
@@ -49,4 +45,3 @@ function Footer() {
 }
 
 export default Footer;
-export { aboutIsOpenAtom, contactIsOpenAtom }

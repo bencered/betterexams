@@ -1,25 +1,22 @@
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { resourcesIsOpenAtom } from "../PaperGrid"
-import { selectionArrayAtom } from "../Form"
+import { useDialogs } from "../../contexts/DialogContext";
+import { useExam } from "../../contexts/ExamContext";
 import ReactMarkdown from "react-markdown";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import sendWebhook from "../../scripts/discordWebhook"
 import * as dotenv from 'dotenv';
 
 dotenv.config()
 const WEBHOOK_URL = process.env.NEXT_PUBLIC_RESOURCES_WEBHOOK as string;
-let fetchedSubjectNumber: string;
 
 function ResourcesDialog() {
-    let [aboutIsOpen, setAboutIsOpen] = useAtom(resourcesIsOpenAtom);
-    let [selectionArray,] = useAtom(selectionArrayAtom);
+    const { resourcesIsOpen, setResourcesIsOpen } = useDialogs();
+    const { selectionArray } = useExam();
+    const fetchedSubjectNumberRef = useRef<string>("");
 
     var data = require('../../files/data.json');
     var subNumsToNames = data["subNumsToNames"]
-
-    console.log(fetchedSubjectNumber)
 
     const subjectNumber = selectionArray[1]
     const subjectName = subNumsToNames[subjectNumber]
@@ -27,7 +24,7 @@ function ResourcesDialog() {
     const markdownPath = `/resources/${subjectNumber}.md`
     const universalPath = "/resources/universal.md"
 
-    let [markdownText, setMarkdownText] = useState("");
+    const [markdownText, setMarkdownText] = useState("");
 
     const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -48,7 +45,7 @@ function ResourcesDialog() {
         }
     }
 
-    const fetchMarkdownText = async () => {
+    const fetchMarkdownText = useCallback(async () => {
         try {
             const response = await fetch(markdownPath)
             const uResponse = await fetch(universalPath)
@@ -58,24 +55,24 @@ function ResourcesDialog() {
             if (rText === "") {
                 setMarkdownText(uText + "No specific links for this subject found.")
             }
-            fetchedSubjectNumber = subjectNumber
+            fetchedSubjectNumberRef.current = subjectNumber
         } catch (error) {
             setMarkdownText("We ran into an error! Please contact me using the form in the footer. Thanks :)\n\n\n" + error)
         }
+    }, [markdownPath, universalPath, subjectNumber]);
 
-        return <></>
-    }
-
-    if (!(fetchedSubjectNumber == subjectNumber)) {
-        fetchMarkdownText()
-    }
+    useEffect(() => {
+        if (fetchedSubjectNumberRef.current !== subjectNumber) {
+            fetchMarkdownText()
+        }
+    }, [subjectNumber, fetchMarkdownText]);
 
     return (
         <AnimatePresence>
-            {aboutIsOpen && (
+            {resourcesIsOpen && (
                 <Dialog
-                    open={aboutIsOpen}
-                    onClose={() => setAboutIsOpen(false)}
+                    open={resourcesIsOpen}
+                    onClose={() => setResourcesIsOpen(false)}
                     className="absolute z-50 w-full h-full"
                 >
                     <motion.div
@@ -108,7 +105,7 @@ function ResourcesDialog() {
 
                                     </Dialog.Description>
 
-                                    <button onClick={() => setAboutIsOpen(false)} className="mt-4 rounded-md p-2 hover:scale-105">Close</button>
+                                    <button onClick={() => setResourcesIsOpen(false)} className="mt-4 rounded-md p-2 hover:scale-105">Close</button>
                                 </Dialog.Panel>
                             </div>
                         </div>

@@ -1,20 +1,14 @@
 import PaperCard from "./PaperCard";
-import { atom, useAtom } from "jotai";
-import { Switch } from '@headlessui/react';
+import { useDialogs } from "../contexts/DialogContext";
+import { useExam } from "../contexts/ExamContext";
 
 interface PaperGridProps {
   examPaperList: string[][];
 }
 
-let shareIsOpenAtom = atom(false)
-let resourcesIsOpenAtom = atom(false)
-let isCompactAtom = atom(false)
-
 function PaperGrid({ examPaperList }: PaperGridProps) {
-
-  let [, setShareIsOpen] = useAtom(shareIsOpenAtom)
-  let [, setResourcesIsOpen] = useAtom(resourcesIsOpenAtom)
-  let [isCompact, setIsCompact] = useAtom(isCompactAtom)
+  const { setShareIsOpen, setResourcesIsOpen } = useDialogs();
+  const { isCompact, setIsCompact } = useExam();
 
   const years: string[] = [];
   for (const element of examPaperList) {
@@ -280,5 +274,4 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
   }
 }
 
-export { shareIsOpenAtom, resourcesIsOpenAtom, isCompactAtom };
 export default PaperGrid;

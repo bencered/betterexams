@@ -5,15 +5,10 @@ import ResourcesDialog from "./components/Dialogs/ResourcesDialog";
 import ShareDialog from "./components/Dialogs/ShareDialog";
 import Footer from "./components/Footer";
 import ChoicesForm from "./components/Form";
-import { useAtom } from "jotai";
-import { aboutIsOpenAtom, contactIsOpenAtom } from "./components/Footer";
-import { shareIsOpenAtom, resourcesIsOpenAtom } from "./components/PaperGrid";
+import { useDialogs } from "./contexts/DialogContext";
 
 export default function Home() {
-    let [aboutIsOpen] = useAtom(aboutIsOpenAtom);
-    let [contactIsOpen] = useAtom(contactIsOpenAtom);
-    let [shareIsOpen] = useAtom(shareIsOpenAtom);
-    let [resourcesIsOpen] = useAtom(resourcesIsOpenAtom);
+    const { aboutIsOpen, contactIsOpen, shareIsOpen, resourcesIsOpen } = useDialogs();
 
     return (
         <main

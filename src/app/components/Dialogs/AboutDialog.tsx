@@ -1,10 +1,9 @@
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAtom } from "jotai";
-import { aboutIsOpenAtom } from "../Footer";
+import { useDialogs } from "../../contexts/DialogContext";
 
 function AboutDialog() {
-  let [aboutIsOpen, setAboutIsOpen] = useAtom(aboutIsOpenAtom);
+  const { aboutIsOpen, setAboutIsOpen } = useDialogs();
 
   return (
     <AnimatePresence>

@@ -1,0 +1,1 @@
+{ "action": "subscribe", "platform": "polymarket", "version": 1, "type": "orders", "filters": { "users": [ "0x6031b6eed1c97e853c6e0f03ad3ce3529351f96d", "0x7c3db723f1d4d8cb9c550095203b686cb11e5c6b" ] } }

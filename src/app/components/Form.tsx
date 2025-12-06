@@ -3,17 +3,14 @@
 import { Combobox, Listbox } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
 import { AnimatePresence, motion } from "framer-motion";
-import { atom, useAtom } from "jotai";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from 'react';
 import PaperGrid from './PaperGrid';
+import { useExam } from "../contexts/ExamContext";
 
 // INITIALISATION
 var data = require('../files/data.json');
 var subNumsToNames = data["subNumsToNames"]
-
-let selectionArrayAtom = atom(["lc", "3", "2025", "EV", "Higher"]);
-let examPaperListAtom = atom([[""]])
 
 const url: string = "https://www.examinations.ie/archive";
 
@@ -34,9 +31,7 @@ let tempCommonDisabled: boolean = false;
 
 function ChoicesForm() {
     const searchQuery = useSearchParams();
-
-    let [selectionArray, setSelectionArray] = useAtom(selectionArrayAtom);
-    let [examListAtom, setExamListAtom] = useAtom(examPaperListAtom)
+    const { setSelectionArray, setExamPaperList } = useExam();
 
     if (searchQuery) {
         certSet = searchQuery.has("cert") ? searchQuery.get("cert") as string : "lc";
@@ -134,7 +129,7 @@ function ChoicesForm() {
         }
 
         setExamList(newExamList);
-        setExamListAtom(newExamList);
+        setExamPaperList(newExamList);
     }
 
     const handleLevelChange = (value: string) => {
@@ -659,5 +654,4 @@ function ChoicesForm() {
 
 }
 
-export { examPaperListAtom, selectionArrayAtom };
 export default ChoicesForm;

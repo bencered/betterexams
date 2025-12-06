@@ -1,15 +1,14 @@
 import { Dialog } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useAtom } from "jotai";
+import { useDialogs } from "../../contexts/DialogContext";
 import sendWebhook from "../../scripts/discordWebhook";
-import { contactIsOpenAtom } from "../Footer";
 import * as dotenv from 'dotenv';
 
 dotenv.config()
 const WEBHOOK_URL = process.env.NEXT_PUBLIC_CONTACT_WEBHOOK as string;
 
 function ContactDialog() {
-  let [contactIsOpen, setContactIsOpen] = useAtom(contactIsOpenAtom);
+  const { contactIsOpen, setContactIsOpen } = useDialogs();
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
