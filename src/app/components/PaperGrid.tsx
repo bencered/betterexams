@@ -1,4 +1,7 @@
 import PaperCard from "./PaperCard";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import { useDialogs } from "../contexts/DialogContext";
 import { useExam } from "../contexts/ExamContext";
 
@@ -12,8 +15,8 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
 
   const years: string[] = [];
   for (const element of examPaperList) {
-    const year = element[3]
-    if (!(years.includes(year))) {
+    const year = element[3];
+    if (!years.includes(year)) {
       years.push(year);
     }
   }
@@ -32,38 +35,32 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
         <hr className="block mt-6 mb-4 border-white/50 border-dashed h-[1px] w-full" />
 
         <div className="flex flex-row flex-wrap gap-x-4 justify-center">
-          <button
-            className="mb-5 whitespace-nowrap w-min
-                    bg-zinc-900 p-3 rounded-lg border-[#303436] border-2 text-white            
-                    "
+          <Button
+            className="mb-5 whitespace-nowrap bg-zinc-900 border-[#303436] border-2 text-white hover:bg-zinc-800"
             onClick={() => setShareIsOpen(true)}
           >
             Share Links
-          </button>
+          </Button>
 
-          <button
-            className="mb-5 whitespace-nowrap w-min
-                    bg-zinc-900 p-3 rounded-lg border-[#303436] border-2 text-white            
-                    "
+          <Button
+            className="mb-5 whitespace-nowrap bg-zinc-900 border-[#303436] border-2 text-white hover:bg-zinc-800"
             onClick={() => setResourcesIsOpen(true)}
           >
             {examPaperList[0][1]} Resources
-          </button>
+          </Button>
 
-          <div className="flex mb-5 items-center text-white">
-            <input
-              type="checkbox"
+          <div className="flex mb-5 items-center text-white gap-2">
+            <Checkbox
               checked={isCompact}
-              onChange={() => setIsCompact(!isCompact)}
-              className="flex h-6 w-6 shrink-0 cursor-pointer rounded-full border-2 border-[#303436] transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+              onCheckedChange={(checked) => setIsCompact(checked === true)}
               id="compactModeCheckbox"
             />
-            <label
+            <Label
               htmlFor="compactModeCheckbox"
-              className="ml-2"
+              className="cursor-pointer"
             >
               Compact Mode?
-            </label>
+            </Label>
           </div>
         </div>
         {
@@ -167,20 +164,18 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
     if (isCompact) {
       return (
         <div>
-          <div className="flex mt-5 items-center justify-center text-white">
-            <input
-              type="checkbox"
+          <div className="flex mt-5 items-center justify-center text-white gap-2">
+            <Checkbox
               checked={isCompact}
-              onChange={() => setIsCompact(!isCompact)}
-              className="flex h-6 w-6 shrink-0 cursor-pointer rounded-full border-2 border-[#303436] transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+              onCheckedChange={(checked) => setIsCompact(checked === true)}
               id="compactModeCheckbox"
             />
-            <label
+            <Label
               htmlFor="compactModeCheckbox"
-              className="ml-2"
+              className="cursor-pointer"
             >
               Compact Mode?
-            </label>
+            </Label>
           </div>
           <div className="justify-center max-w-[85rem]">
             {
@@ -221,20 +216,18 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
     } else {
       return (
         <div>
-          <div className="flex mt-5 items-center justify-center text-white">
-            <input
-              type="checkbox"
+          <div className="flex mt-5 items-center justify-center text-white gap-2">
+            <Checkbox
               checked={isCompact}
-              onChange={() => setIsCompact(!isCompact)}
-              className="flex h-6 w-6 shrink-0 cursor-pointer rounded-full border-2 border-[#303436] transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+              onCheckedChange={(checked) => setIsCompact(checked === true)}
               id="compactModeCheckbox"
             />
-            <label
+            <Label
               htmlFor="compactModeCheckbox"
-              className="ml-2"
+              className="cursor-pointer"
             >
               Compact Mode?
-            </label>
+            </Label>
           </div>
           <div className="justify-center max-w-[85rem]">
             {
