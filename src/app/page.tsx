@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Suspense } from "react";
 import AboutDialog from "./components/Dialogs/AboutDialog";
 import ContactDialog from "./components/Dialogs/ContactDialog";
 import ResourcesDialog from "./components/Dialogs/ResourcesDialog";
@@ -42,7 +43,9 @@ export default function Home() {
                     An Alternative To Examinations.ie
                 </h2>
                 <div className="text-slate-400 items-center h-full mt-8 md:mt-14">
-                    <ChoicesForm />
+                    <Suspense fallback={<div className="animate-pulse">Loading...</div>}>
+                        <ChoicesForm />
+                    </Suspense>
                 </div>
                 <div className="flex-grow mt-14" />
                 <AboutDialog />

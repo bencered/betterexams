@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDialogs } from "../../contexts/DialogContext";
 import { Button } from "@/components/ui/button";
@@ -36,7 +36,9 @@ export default function Sidebar() {
 
         {/* Exam Selection Form */}
         <div className="space-y-5">
-          <ExamSelectionForm />
+          <Suspense fallback={<div className="animate-pulse text-zinc-500">Loading...</div>}>
+            <ExamSelectionForm />
+          </Suspense>
 
           {/* Divider */}
           <div className="border-t border-zinc-800" />
