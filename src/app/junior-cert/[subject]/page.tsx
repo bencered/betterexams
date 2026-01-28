@@ -71,8 +71,52 @@ export default async function JuniorCertSubjectPage({ params }: { params: Promis
 
   const sortedYears = Object.keys(years).sort((a, b) => parseInt(b) - parseInt(a))
 
+  // Schema markup
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://betterexams.ie"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: `Junior Cert ${subjectInfo.name}`,
+        item: `https://betterexams.ie/junior-cert/${subject}`
+      }
+    ]
+  }
+
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: `Junior Cert ${subjectInfo.name}`,
+    description: `Past exam papers and marking schemes for Junior Cert ${subjectInfo.name}`,
+    provider: {
+      "@type": "Organization",
+      name: "Better Exams",
+      url: "https://betterexams.ie"
+    },
+    educationalLevel: "Junior Certificate",
+    inLanguage: "en",
+    isAccessibleForFree: true
+  }
+
   return (
-    <main className="min-h-screen flex flex-col items-center p-8 md:p-24">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
+      <main className="min-h-screen flex flex-col items-center p-8 md:p-24">
       {/* Header - matches homepage */}
       <Link href="/" className="group">
         <h1 className="text-5xl md:text-6xl font-bold text-center hover:text-blue-400 transition-colors">Better Exams</h1>
@@ -124,5 +168,6 @@ export default async function JuniorCertSubjectPage({ params }: { params: Promis
         </div>
       </div>
     </main>
+    </>
   )
 }

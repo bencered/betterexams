@@ -85,8 +85,60 @@ export default async function LeavingCertYearPage({ params }: { params: Promise<
   const yearData = subjectData[year]
   const allYears = Object.keys(subjectData).sort((a, b) => parseInt(b) - parseInt(a))
 
+  // Schema markup
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://betterexams.ie"
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: `Leaving Cert ${subjectInfo.name}`,
+        item: `https://betterexams.ie/leaving-cert/${subject}`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: year,
+        item: `https://betterexams.ie/leaving-cert/${subject}/${year}`
+      }
+    ]
+  }
+
+  const learningResourceSchema = {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: `Leaving Cert ${subjectInfo.name} ${year} Exam Papers`,
+    description: `Past exam papers and marking schemes for Leaving Cert ${subjectInfo.name} ${year}`,
+    educationalLevel: "Leaving Certificate",
+    learningResourceType: "Exam",
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    provider: {
+      "@type": "Organization",
+      name: "Better Exams",
+      url: "https://betterexams.ie"
+    },
+    datePublished: year
+  }
+
   return (
-    <main className="min-h-screen flex flex-col items-center p-8 md:p-24">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(learningResourceSchema) }}
+      />
+      <main className="min-h-screen flex flex-col items-center p-8 md:p-24">
       {/* Header - matches homepage */}
       <Link href="/" className="group">
         <h1 className="text-5xl md:text-6xl font-bold text-center hover:text-blue-400 transition-colors">Better Exams</h1>
@@ -196,5 +248,6 @@ export default async function LeavingCertYearPage({ params }: { params: Promise<
         </div>
       </div>
     </main>
+    </>
   )
 }

@@ -36,6 +36,36 @@ export const metadata = {
   },
 };
 
+// Schema markup for the website
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Better Exams",
+  alternateName: "BetterExams.ie",
+  url: "https://betterexams.ie",
+  description: "Free access to all Leaving Cert and Junior Cert past papers and marking schemes.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: "https://betterexams.ie/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: "Better Exams",
+  url: "https://betterexams.ie",
+  logo: "https://betterexams.ie/favicon.ico",
+  description: "Free educational resource providing Leaving Cert and Junior Cert past exam papers and marking schemes for Irish students.",
+  sameAs: [
+    "https://github.com/General-Mudkip/betterexams"
+  ]
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -43,6 +73,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className={inter.className}>
         <Providers>
           {children}
