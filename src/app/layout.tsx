@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from './contexts/Providers';
@@ -74,6 +75,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <Script defer src="https://umami.bence.red/script.js" data-website-id="b740caa7-b41d-49e0-a069-463f2fab0cf8" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
