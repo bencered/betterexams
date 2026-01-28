@@ -4,7 +4,6 @@ import data from './files/data.json'
 type ExamData = {
   lc: Record<string, Record<string, unknown>>
   jc: Record<string, Record<string, unknown>>
-  lb: Record<string, Record<string, unknown>>
   subNumsToNames: Record<string, string>
 }
 
@@ -16,22 +15,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const examData = data as ExamData
   const baseUrl = 'https://betterexams.ie'
   
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-    },
-    {
-      url: `${baseUrl}/v2`,
-      lastModified: new Date(),
-    },
+  const pages: MetadataRoute.Sitemap = [
+    // Static pages
+    { url: baseUrl, lastModified: new Date() },
+    { url: `${baseUrl}/v2`, lastModified: new Date() },
   ]
 
-  // Generate entries for each subject with dedicated pages
-  const subjectPages: MetadataRoute.Sitemap = []
-  
-  // Leaving Cert subjects
+  // Leaving Cert pages
   for (const [subjectNum, years] of Object.entries(examData.lc)) {
     const subjectName = examData.subNumsToNames[subjectNum]
     if (!subjectName) continue
@@ -40,13 +30,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const yearKeys = Object.keys(years).sort().reverse()
     const latestYear = yearKeys[0] || '2024'
     
-    subjectPages.push({
+    // Subject page
+    pages.push({
       url: `${baseUrl}/leaving-cert/${slug}`,
       lastModified: new Date(`${latestYear}-06-01`),
     })
+    
+    // Year pages
+    for (const year of yearKeys) {
+      pages.push({
+        url: `${baseUrl}/leaving-cert/${slug}/${year}`,
+        lastModified: new Date(`${year}-06-01`),
+      })
+    }
   }
   
-  // Junior Cert subjects
+  // Junior Cert pages
   for (const [subjectNum, years] of Object.entries(examData.jc)) {
     const subjectName = examData.subNumsToNames[subjectNum]
     if (!subjectName) continue
@@ -55,11 +54,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const yearKeys = Object.keys(years).sort().reverse()
     const latestYear = yearKeys[0] || '2024'
     
-    subjectPages.push({
+    // Subject page
+    pages.push({
       url: `${baseUrl}/junior-cert/${slug}`,
       lastModified: new Date(`${latestYear}-06-01`),
     })
+    
+    // Year pages
+    for (const year of yearKeys) {
+      pages.push({
+        url: `${baseUrl}/junior-cert/${slug}/${year}`,
+        lastModified: new Date(`${year}-06-01`),
+      })
+    }
   }
 
-  return [...staticPages, ...subjectPages]
+  return pages
 }
