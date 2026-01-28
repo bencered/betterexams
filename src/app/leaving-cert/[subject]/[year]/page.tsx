@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subject: 
   return {
     title: `Leaving Cert ${subjectInfo.name} ${year} - Past Papers & Marking Schemes`,
     description: `Download Leaving Cert ${subjectInfo.name} ${year} exam papers and marking schemes. Free PDFs for Higher and Ordinary Level from examinations.ie.`,
-    keywords: `leaving cert ${subjectInfo.name.toLowerCase()} ${year}, ${subjectInfo.name.toLowerCase()} exam ${year}, leaving cert ${year} papers, ${subjectInfo.name.toLowerCase()} marking scheme ${year}`,
+    keywords: `leaving cert ${subjectInfo.name.toLowerCase()} ${year}, lc ${subjectInfo.name.toLowerCase()} ${year}, ${subjectInfo.name.toLowerCase()} past paper ${year}, leaving cert ${year} papers, ${subjectInfo.name.toLowerCase()} marking scheme ${year}, examinations.ie ${subjectInfo.name.toLowerCase()}, sec exam papers ${year}, lc ${subjectInfo.name.toLowerCase()} past papers`,
     openGraph: {
       title: `Leaving Cert ${subjectInfo.name} ${year}`,
       description: `${subjectInfo.name} ${year} exam papers and marking schemes for Leaving Cert.`,

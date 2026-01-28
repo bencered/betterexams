@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subject: 
   return {
     title: `Junior Cert ${subjectInfo.name} ${year} - Past Papers & Marking Schemes`,
     description: `Download Junior Cert ${subjectInfo.name} ${year} exam papers and marking schemes. Free PDFs for Higher and Ordinary Level from examinations.ie.`,
-    keywords: `junior cert ${subjectInfo.name.toLowerCase()} ${year}, ${subjectInfo.name.toLowerCase()} exam ${year}, junior cert ${year} papers, ${subjectInfo.name.toLowerCase()} marking scheme ${year}`,
+    keywords: `junior cert ${subjectInfo.name.toLowerCase()} ${year}, jc ${subjectInfo.name.toLowerCase()} ${year}, ${subjectInfo.name.toLowerCase()} past paper ${year}, junior cycle ${year} papers, ${subjectInfo.name.toLowerCase()} marking scheme ${year}, examinations.ie ${subjectInfo.name.toLowerCase()}, sec exam papers ${year}, jc ${subjectInfo.name.toLowerCase()} past papers`,
     openGraph: {
       title: `Junior Cert ${subjectInfo.name} ${year}`,
       description: `${subjectInfo.name} ${year} exam papers and marking schemes for Junior Cert.`,

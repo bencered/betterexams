@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subject: 
   return {
     title: `Leaving Cert ${subjectInfo.name} Past Papers | Better Exams`,
     description: `Free access to all Leaving Cert ${subjectInfo.name} past exam papers and marking schemes from 2000-2025. Download PDFs from examinations.ie.`,
-    keywords: `leaving cert ${subjectInfo.name.toLowerCase()}, ${subjectInfo.name.toLowerCase()} past papers, leaving cert ${subjectInfo.name.toLowerCase()} exam, ${subjectInfo.name.toLowerCase()} marking scheme, SEC ${subjectInfo.name.toLowerCase()}`,
+    keywords: `leaving cert ${subjectInfo.name.toLowerCase()}, lc ${subjectInfo.name.toLowerCase()}, ${subjectInfo.name.toLowerCase()} past papers, lc ${subjectInfo.name.toLowerCase()} past paper, leaving cert ${subjectInfo.name.toLowerCase()} exam, ${subjectInfo.name.toLowerCase()} marking scheme, SEC ${subjectInfo.name.toLowerCase()}, examinations.ie ${subjectInfo.name.toLowerCase()}, examinations.ie alternative`,
     openGraph: {
       title: `Leaving Cert ${subjectInfo.name} Past Papers`,
       description: `Free access to all Leaving Cert ${subjectInfo.name} past exam papers and marking schemes.`,
