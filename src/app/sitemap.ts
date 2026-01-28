@@ -4,6 +4,7 @@ import data from './files/data.json'
 type ExamData = {
   lc: Record<string, Record<string, unknown>>
   jc: Record<string, Record<string, unknown>>
+  lb: Record<string, Record<string, unknown>>
   subNumsToNames: Record<string, string>
 }
 
@@ -64,6 +65,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const year of yearKeys) {
       pages.push({
         url: `${baseUrl}/junior-cert/${slug}/${year}`,
+        lastModified: new Date(`${year}-06-01`),
+      })
+    }
+  }
+
+  // Leaving Cert Applied pages (only subjects with recent exam papers)
+  const currentYear = new Date().getFullYear()
+  const minYear = currentYear - 10
+  
+  for (const [subjectNum, years] of Object.entries(examData.lb)) {
+    const subjectName = examData.subNumsToNames[subjectNum]
+    if (!subjectName) continue
+    
+    const yearKeys = Object.keys(years).sort().reverse()
+    const yearNums = yearKeys.map(Number)
+    if (!yearNums.some(y => y >= minYear)) continue
+    
+    // Check if subject has any actual exam papers
+    const hasExamPapers = Object.values(years).some(
+      (yearData: any) => yearData?.exampapers && yearData.exampapers.length > 0
+    )
+    if (!hasExamPapers) continue
+    
+    const slug = slugify(subjectName)
+    const latestYear = yearKeys[0] || '2024'
+    
+    // Subject page
+    pages.push({
+      url: `${baseUrl}/leaving-cert-applied/${slug}`,
+      lastModified: new Date(`${latestYear}-06-01`),
+    })
+    
+    // Year pages
+    for (const year of yearKeys) {
+      pages.push({
+        url: `${baseUrl}/leaving-cert-applied/${slug}/${year}`,
         lastModified: new Date(`${year}-06-01`),
       })
     }

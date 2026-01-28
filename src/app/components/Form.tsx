@@ -263,8 +263,11 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
 
         if (checkIfAllYears()) { return; }
 
-        if ("exampapers" in data[certificate][tempSubject][tempYear]) {
-            const exampapers = data[certificate][tempSubject][tempYear]["exampapers"];
+        const yearData = data[certificate]?.[tempSubject]?.[tempYear];
+        if (!yearData || typeof yearData !== 'object') { return; }
+
+        if ("exampapers" in yearData) {
+            const exampapers = yearData["exampapers"];
             tempHigherDisabled = true;
             tempOrdinaryDisabled = true;
             tempFoundationDisabled = true;
@@ -312,12 +315,30 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
         determineLevelAvailability()
         ensureSubjectHasLevel(currentLevel);
 
-        let firstAvailableSubject = Object.keys(data[val])[0];
+        // Find first subject with recent papers (last 10 years) and actual exam papers
+        const thisYear = new Date().getFullYear();
+        const minRecentYear = thisYear - 10;
+        let firstAvailableSubject = Object.keys(data[val]).find(subjectId => {
+            const subjectData = data[val][subjectId] || {};
+            const years = Object.keys(subjectData).map(Number);
+            const hasRecentPapers = years.some(y => y >= minRecentYear);
+            const hasExamPapers = Object.values(subjectData).some(
+                (yearData: any) => yearData?.exampapers && yearData.exampapers.length > 0
+            );
+            return hasRecentPapers && hasExamPapers;
+        }) || Object.keys(data[val])[0];
+        
         setSubject(firstAvailableSubject);
 
-        let arrayOfYears = Object.keys(data[val][Object.keys(subNumsToNames)[0]]);
+        let arrayOfYears = Object.keys(data[val][firstAvailableSubject] || {});
         let firstAvailableYear = arrayOfYears.at(-1) || '2021';
         setYear(firstAvailableYear);
+        
+        // LCA only has Common level
+        if (val === 'lb') {
+            currentLevel = 'Common';
+            setLevel('Common');
+        }
     }
 
     function handleSubjectChange(val: string) {
@@ -355,9 +376,25 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
     }
 
 
+    const currentYear = new Date().getFullYear();
+    const minYear = currentYear - 10;
+    
     const uniqueSubNumsToNames: Record<string, string> = {};
     Object.entries(subNumsToNames).forEach(([id, subjectName]) => {
         if (!Object.values(uniqueSubNumsToNames).includes(subjectName as string) && data[certificate].hasOwnProperty(id)) {
+            const subjectData = data[certificate][id] || {};
+            const subjectYears = Object.keys(subjectData).map(Number);
+            
+            // Check if subject has papers in the last 10 years
+            const hasRecentPapers = subjectYears.some(y => y >= minYear);
+            if (!hasRecentPapers) return;
+            
+            // Check if subject has any actual exam papers
+            const hasExamPapers = Object.values(subjectData).some(
+                (yearData: any) => yearData?.exampapers && yearData.exampapers.length > 0
+            );
+            if (!hasExamPapers) return;
+            
             uniqueSubNumsToNames[id] = subjectName as string;
         }
     });
@@ -379,7 +416,7 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
                     <Select value={certificate} onValueChange={handleCertChange}>
                         <SelectTrigger className="h-[52px] text-white text-left bg-zinc-900 border-2 border-[#303436] hover:border-[#494f52] hover:bg-[#494f52]">
                             <SelectValue>
-                                {certificate === "lc" ? "Leaving Certificate" : "Junior Certificate"}
+                                {certificate === "lc" ? "Leaving Certificate" : certificate === "jc" ? "Junior Certificate" : "Leaving Cert Applied"}
                             </SelectValue>
                         </SelectTrigger>
                         <SelectContent className="bg-gray-950 border-2 border-[#303436] text-white">
@@ -388,6 +425,9 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
                             </SelectItem>
                             <SelectItem value="jc" className="hover:bg-zinc-800 focus:bg-zinc-800">
                                 Junior Certificate
+                            </SelectItem>
+                            <SelectItem value="lb" className="hover:bg-zinc-800 focus:bg-zinc-800">
+                                Leaving Cert Applied
                             </SelectItem>
                         </SelectContent>
                     </Select>
@@ -469,40 +509,40 @@ function ChoicesForm({ showPaperGrid = true }: ChoicesFormProps) {
                         <SelectContent className="bg-gray-950 border-2 border-[#303436]">
                             <SelectItem 
                                 value="Higher" 
-                                disabled={tempHigherDisabled}
+                                disabled={tempHigherDisabled || certificate === 'lb'}
                                 className={cn(
                                     "hover:bg-zinc-800 focus:bg-gray-700",
-                                    tempHigherDisabled ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
+                                    (tempHigherDisabled || certificate === 'lb') ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
                                 )}
                             >
                                 Higher
                             </SelectItem>
                             <SelectItem 
                                 value="Ordinary" 
-                                disabled={tempOrdinaryDisabled}
+                                disabled={tempOrdinaryDisabled || certificate === 'lb'}
                                 className={cn(
                                     "hover:bg-zinc-800 focus:bg-gray-700",
-                                    tempOrdinaryDisabled ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
+                                    (tempOrdinaryDisabled || certificate === 'lb') ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
                                 )}
                             >
                                 Ordinary
                             </SelectItem>
                             <SelectItem 
                                 value="Foundation" 
-                                disabled={tempFoundationDisabled}
+                                disabled={tempFoundationDisabled || certificate === 'lb'}
                                 className={cn(
                                     "hover:bg-zinc-800 focus:bg-gray-700",
-                                    tempFoundationDisabled ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
+                                    (tempFoundationDisabled || certificate === 'lb') ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
                                 )}
                             >
                                 Foundation
                             </SelectItem>
                             <SelectItem 
                                 value="Common" 
-                                disabled={tempCommonDisabled}
+                                disabled={tempCommonDisabled && certificate !== 'lb'}
                                 className={cn(
                                     "hover:bg-zinc-800 focus:bg-gray-700",
-                                    tempCommonDisabled ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
+                                    (tempCommonDisabled && certificate !== 'lb') ? "text-red-500 bg-red-950/70 italic line-through" : "text-white"
                                 )}
                             >
                                 Common
