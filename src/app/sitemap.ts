@@ -17,14 +17,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
     },
     {
       url: `${baseUrl}/v2`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
     },
   ]
 
@@ -50,8 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       subjectPages.push({
         url: `${baseUrl}/#${examType.name}-${subjectNum}`,
         lastModified: new Date(`${latestYear}-06-01`),
-        changeFrequency: 'yearly',
-        priority: 0.7,
       })
     }
   }
