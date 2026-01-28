@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import data from '../../files/data.json'
 
 type ExamData = {
@@ -71,73 +72,55 @@ export default async function JuniorCertSubjectPage({ params }: { params: Promis
   const sortedYears = Object.keys(years).sort((a, b) => parseInt(b) - parseInt(a))
 
   return (
-    <main className="min-h-screen bg-zinc-950 text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <Link href="/" className="text-blue-400 hover:text-blue-300 mb-6 inline-block">
-          ← Back to Better Exams
-        </Link>
-        
-        <h1 className="text-4xl font-bold mb-2">Junior Cert {subjectInfo.name}</h1>
-        <p className="text-zinc-400 mb-8">Past exam papers and marking schemes</p>
+    <main className="min-h-screen flex flex-col items-center p-8 md:p-24">
+      {/* Header - matches homepage */}
+      <Link href="/" className="group">
+        <h1 className="text-5xl md:text-6xl font-bold text-center hover:text-blue-400 transition-colors">Better Exams</h1>
+      </Link>
+      <p className="italic text-white/70 mt-1 text-center">An Alternative To Examinations.ie</p>
 
-        <div className="space-y-6">
-          {sortedYears.map((year) => {
-            const yearData = years[year]
-            return (
-              <div key={year} className="bg-zinc-900 rounded-lg p-6 border border-zinc-800">
-                <h2 className="text-2xl font-semibold mb-4">{year}</h2>
-                
-                <div className="grid md:grid-cols-2 gap-4">
-                  {yearData.exampapers && yearData.exampapers.length > 0 && (
-                    <div>
-                      <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-2">Exam Papers</h3>
-                      <ul className="space-y-1">
-                        {yearData.exampapers.map((paper, i) => (
-                          <li key={i}>
-                            <a
-                              href={`https://www.examinations.ie/archive/exampapers/${year}/${paper.url}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-blue-400 hover:text-blue-300 text-sm"
-                            >
-                              {paper.details || 'Exam Paper'}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  
-                  {yearData.markingschemes && yearData.markingschemes.length > 0 && (
-                    <div>
-                      <h3 className="text-sm font-medium text-zinc-400 uppercase tracking-wider mb-2">Marking Schemes</h3>
-                      <ul className="space-y-1">
-                        {yearData.markingschemes.map((scheme, i) => (
-                          <li key={i}>
-                            <a
-                              href={`https://www.examinations.ie/archive/markingschemes/${year}/${scheme.url}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-green-400 hover:text-green-300 text-sm"
-                            >
-                              {scheme.details || 'Marking Scheme'}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
+      {/* Prominent CTA */}
+      <Link 
+        href={`/?exam=jc&subject=${subjectInfo.num}`}
+        className="mt-8 flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:scale-105"
+      >
+        Open Interactive Version
+        <ArrowRight className="w-5 h-5" />
+      </Link>
+
+      {/* Subject title */}
+      <div className="mt-10 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold">Junior Cert {subjectInfo.name}</h2>
+        <p className="text-zinc-400 mt-2">Past exam papers and marking schemes</p>
+      </div>
+
+      {/* Years list */}
+      <div className="mt-8 w-full max-w-2xl space-y-4">
+        {sortedYears.map((year) => {
+          const yearData = years[year]
+          const paperCount = (yearData.exampapers?.length || 0) + (yearData.markingschemes?.length || 0)
+          return (
+            <Link
+              key={year}
+              href={`/junior-cert/${subject}/${year}`}
+              className="block bg-zinc-900/50 hover:bg-zinc-800/50 border border-zinc-800 hover:border-zinc-700 rounded-lg p-4 transition-all duration-200"
+            >
+              <div className="flex justify-between items-center">
+                <span className="text-xl font-semibold">{year}</span>
+                <span className="text-zinc-400 text-sm">{paperCount} files</span>
               </div>
-            )
-          })}
-        </div>
+            </Link>
+          )
+        })}
+      </div>
 
-        <div className="mt-12 pt-8 border-t border-zinc-800 text-center text-zinc-500 text-sm">
-          <p>Papers sourced from <a href="https://examinations.ie" className="text-blue-400 hover:underline">examinations.ie</a></p>
-          <Link href="/" className="text-blue-400 hover:underline mt-2 inline-block">
-            Use the interactive version →
-          </Link>
+      {/* Footer */}
+      <div className="mt-16 text-center text-zinc-500 text-sm">
+        <p>Papers sourced from <a href="https://examinations.ie" className="text-blue-400 hover:underline">examinations.ie</a></p>
+        <div className="mt-4 flex items-center justify-center gap-4">
+          <Link href="/" className="text-blue-400 hover:underline">Home</Link>
+          <span>•</span>
+          <a href="https://github.com/General-Mudkip/betterexams" target="_blank" className="text-green-400 hover:underline">GitHub</a>
         </div>
       </div>
     </main>
