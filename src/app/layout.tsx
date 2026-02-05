@@ -12,6 +12,9 @@ export const metadata = {
   keywords: "leaving cert past papers, junior cert exam papers, leaving cert maths, leaving cert english, leaving cert irish, leaving cert biology, leaving cert chemistry, leaving cert physics, leaving cert history, leaving cert geography, examinations.ie, SEC exam papers, marking schemes, leaving cert 2024, leaving cert 2023, junior cycle, state exams ireland",
   description:
     "Free access to all Leaving Cert and Junior Cert past papers and marking schemes. Search by subject and year. A better alternative to examinations.ie.",
+  alternates: {
+    canonical: "https://betterexams.ie",
+  },
   openGraph: {
     title: "Better Exams | Leaving Cert & Junior Cert Past Papers",
     description:
@@ -28,8 +31,12 @@ export const metadata = {
       },
     ],
   },
-  alternates: {
-    canonical: "https://betterexams.ie",
+  twitter: {
+    card: "summary_large_image" as const,
+    title: "Better Exams | Leaving Cert & Junior Cert Past Papers",
+    description:
+      "Free access to all Leaving Cert and Junior Cert past papers and marking schemes. Search by subject and year.",
+    images: ["https://betterexams.ie/better_exams_preview.jpg"],
   },
   robots: {
     index: true,
@@ -37,8 +44,7 @@ export const metadata = {
   },
 };
 
-// Schema markup for the website
-const websiteSchema = {
+const websiteSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Better Exams",
@@ -49,13 +55,13 @@ const websiteSchema = {
     "@type": "SearchAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate: "https://betterexams.ie/?search={search_term_string}"
+      urlTemplate: "https://betterexams.ie/?search={search_term_string}",
     },
-    "query-input": "required name=search_term_string"
-  }
-};
+    "query-input": "required name=search_term_string",
+  },
+}).replace(/</g, "\\u003c");
 
-const organizationSchema = {
+const orgSchema = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "Better Exams",
@@ -63,9 +69,9 @@ const organizationSchema = {
   logo: "https://betterexams.ie/favicon.ico",
   description: "Free educational resource providing Leaving Cert and Junior Cert past exam papers and marking schemes for Irish students.",
   sameAs: [
-    "https://github.com/General-Mudkip/betterexams"
-  ]
-};
+    "https://github.com/General-Mudkip/betterexams",
+  ],
+}).replace(/</g, "\\u003c");
 
 export default function RootLayout({
   children,
@@ -78,11 +84,11 @@ export default function RootLayout({
         <Script defer src="https://umami.bence.red/script.js" data-website-id="b740caa7-b41d-49e0-a069-463f2fab0cf8" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+          dangerouslySetInnerHTML={{ __html: websiteSchema }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: orgSchema }}
         />
       </head>
       <body className={inter.className}>

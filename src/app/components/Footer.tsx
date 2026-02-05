@@ -6,11 +6,11 @@ function Footer() {
 
   return (
     <footer className="flex flex-col items-center w-96 mt-10 lg:mt-0">
-      <div className="flex w-full flex-row flex-wrap items-center justify-center space-x-2 text-center text-xl sm:text-lg">
+      <div className="flex w-full flex-row flex-wrap items-center justify-center gap-x-4 text-center text-xl sm:text-lg">
         <Button
           onClick={() => setAboutIsOpen(true)}
           variant="link"
-          className="group cursor-pointer !bg-transparent text-blue-400 hover:text-blue-500 transition-all duration-300 p-0 h-auto"
+          className="group cursor-pointer !bg-transparent text-blue-400 hover:text-blue-500 transition-all duration-300 py-2 px-1 h-auto"
         >
           <span className="flex flex-col">
             About
@@ -18,12 +18,12 @@ function Footer() {
           </span>
         </Button>
 
-        <p>•</p>
+        <span aria-hidden="true" className="text-white">•</span>
 
         <Button
           onClick={() => setContactIsOpen(true)}
           variant="link"
-          className="group cursor-pointer !bg-transparent text-red-400 hover:text-red-500 transition-all duration-300 p-0 h-auto"
+          className="group cursor-pointer !bg-transparent text-red-400 hover:text-red-500 transition-all duration-300 py-2 px-1 h-auto"
         >
           <span className="flex flex-col">
             Contact
@@ -33,7 +33,7 @@ function Footer() {
 
         <a
           href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-          className="text-white hover:text-red-500 transition-all duration-300"
+          className="py-2 text-white hover:text-red-500 transition-all duration-300"
         >
           •
         </a>
@@ -41,7 +41,7 @@ function Footer() {
         <a
           href="https://github.com/General-Mudkip/betterexams"
           target="_blank"
-          className="group cursor-pointer text-green-400 hover:text-green-500"
+          className="group cursor-pointer py-2 px-1 text-green-400 hover:text-green-500"
         >
           <span className="flex flex-col">
             GitHub

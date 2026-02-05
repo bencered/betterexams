@@ -1,0 +1,162 @@
+# Better Exams — Full Content Index
+
+> Complete listing of all subjects and year ranges available on betterexams.ie.
+> For a concise overview, see https://betterexams.ie/llms.txt
+
+## Site Overview
+
+Better Exams provides free access to Irish state examination past papers and marking schemes. All documents are sourced from the State Examinations Commission (examinations.ie).
+
+- Homepage: https://betterexams.ie/
+- Side-by-side viewer: https://betterexams.ie/v2
+- JSON API: https://betterexams.ie/api/{cert}/{subject}/{year}
+
+## Leaving Certificate (64 subjects)
+
+Index page: https://betterexams.ie/leaving-cert/
+
+- **Accounting**: 30 years (1996–2025), 200 documents — https://betterexams.ie/leaving-cert/accounting/
+- **Agricultural Economics**: 24 years (1996–2019), 144 documents — https://betterexams.ie/leaving-cert/agricultural-economics/
+- **Agricultural Science**: 30 years (1996–2025), 199 documents — https://betterexams.ie/leaving-cert/agricultural-science/
+- **Ancient Greek**: 23 years (2001–2024), 113 documents — https://betterexams.ie/leaving-cert/ancient-greek/
+- **Applied Mathematics**: 30 years (1996–2025), 196 documents — https://betterexams.ie/leaving-cert/applied-mathematics/
+- **Arabic**: 28 years (1997–2025), 98 documents — https://betterexams.ie/leaving-cert/arabic/
+- **Art**: 31 years (1995–2025), 551 documents — https://betterexams.ie/leaving-cert/art/
+- **Biology**: 30 years (1996–2025), 249 documents — https://betterexams.ie/leaving-cert/biology/
+- **Bulgarian**: 19 years (2007–2025), 37 documents — https://betterexams.ie/leaving-cert/bulgarian/
+- **Business**: 30 years (1996–2025), 232 documents — https://betterexams.ie/leaving-cert/business/
+- **Chemistry**: 30 years (1996–2025), 203 documents — https://betterexams.ie/leaving-cert/chemistry/
+- **Classical Studies**: 30 years (1996–2025), 269 documents — https://betterexams.ie/leaving-cert/classical-studies/
+- **Computer Science**: 6 years (2020–2025), 63 documents — https://betterexams.ie/leaving-cert/computer-science/
+- **Construction Studies**: 30 years (1996–2025), 247 documents — https://betterexams.ie/leaving-cert/construction-studies/
+- **Croatian**: 12 years (2014–2025), 24 documents — https://betterexams.ie/leaving-cert/croatian/
+- **Czech**: 21 years (2005–2025), 39 documents — https://betterexams.ie/leaving-cert/czech/
+- **Danish**: 19 years (2004–2025), 33 documents — https://betterexams.ie/leaving-cert/danish/
+- **Design & Communication Graphics**: 17 years (2009–2025), 206 documents — https://betterexams.ie/leaving-cert/design-and-communication-graphics/
+- **Dutch**: 21 years (2005–2025), 39 documents — https://betterexams.ie/leaving-cert/dutch/
+- **Economics**: 30 years (1996–2025), 194 documents — https://betterexams.ie/leaving-cert/economics/
+- **Engineering**: 30 years (1996–2025), 236 documents — https://betterexams.ie/leaving-cert/engineering/
+- **English**: 31 years (1995–2025), 187 documents — https://betterexams.ie/leaving-cert/english/
+- **Estonian**: 19 years (2006–2025), 35 documents — https://betterexams.ie/leaving-cert/estonian/
+- **Finnish**: 19 years (2005–2025), 33 documents — https://betterexams.ie/leaving-cert/finnish/
+- **French**: 31 years (1995–2025), 294 documents — https://betterexams.ie/leaving-cert/french/
+- **Gaeilge ChumarsÃ¡ideach**: 1 years (2006–2006), 1 documents — https://betterexams.ie/leaving-cert/gaeilge-chumars-ideach/
+- **Geography**: 30 years (1996–2025), 307 documents — https://betterexams.ie/leaving-cert/geography/
+- **German**: 31 years (1995–2025), 291 documents — https://betterexams.ie/leaving-cert/german/
+- **Hebrew Studies**: 24 years (1996–2022), 62 documents — https://betterexams.ie/leaving-cert/hebrew-studies/
+- **History**: 30 years (1996–2025), 209 documents — https://betterexams.ie/leaving-cert/history/
+- **History (Early Modern)**: 20 years (2000–2025), 86 documents — https://betterexams.ie/leaving-cert/history-early-modern/
+- **Home Economics S & S**: 26 years (2000–2025), 220 documents — https://betterexams.ie/leaving-cert/home-economics-s-and-s/
+- **Hungarian**: 20 years (2006–2025), 38 documents — https://betterexams.ie/leaving-cert/hungarian/
+- **Irish**: 31 years (1995–2025), 338 documents — https://betterexams.ie/leaving-cert/irish/
+- **Italian**: 30 years (1996–2025), 284 documents — https://betterexams.ie/leaving-cert/italian/
+- **Japanese**: 21 years (2005–2025), 218 documents — https://betterexams.ie/leaving-cert/japanese/
+- **Latin**: 30 years (1996–2025), 173 documents — https://betterexams.ie/leaving-cert/latin/
+- **Latvian**: 20 years (2006–2025), 38 documents — https://betterexams.ie/leaving-cert/latvian/
+- **Link Modules**: 26 years (1998–2025), 155 documents — https://betterexams.ie/leaving-cert/link-modules/
+- **Lithuanian**: 20 years (2006–2025), 82 documents — https://betterexams.ie/leaving-cert/lithuanian/
+- **Maltese**: 6 years (2018–2025), 11 documents — https://betterexams.ie/leaving-cert/maltese/
+- **Mandarin Chinese**: 4 years (2022–2025), 52 documents — https://betterexams.ie/leaving-cert/mandarin-chinese/
+- **Mathematics**: 30 years (1996–2025), 539 documents — https://betterexams.ie/leaving-cert/mathematics/
+- **Modern Greek**: 25 years (1996–2025), 51 documents — https://betterexams.ie/leaving-cert/modern-greek/
+- **Music**: 1 years (2006–2006), 2 documents — https://betterexams.ie/leaving-cert/music/
+- **Music**: 30 years (1996–2025), 488 documents — https://betterexams.ie/leaving-cert/music/
+- **Office Admin And Customer**: 1 years (2010–2010), 1 documents — https://betterexams.ie/leaving-cert/office-admin-and-customer/
+- **Physical Education**: 6 years (2020–2025), 48 documents — https://betterexams.ie/leaving-cert/physical-education/
+- **Physics**: 30 years (1996–2025), 204 documents — https://betterexams.ie/leaving-cert/physics/
+- **Physics & Chemistry**: 29 years (1996–2025), 189 documents — https://betterexams.ie/leaving-cert/physics-and-chemistry/
+- **Polish**: 21 years (2005–2025), 82 documents — https://betterexams.ie/leaving-cert/polish/
+- **Politics and Society**: 8 years (2018–2025), 61 documents — https://betterexams.ie/leaving-cert/politics-and-society/
+- **Portuguese**: 21 years (2004–2025), 82 documents — https://betterexams.ie/leaving-cert/portuguese/
+- **Religious Education**: 8 years (2008–2015), 36 documents — https://betterexams.ie/leaving-cert/religious-education/
+- **Religious Education**: 20 years (2005–2025), 115 documents — https://betterexams.ie/leaving-cert/religious-education/
+- **Romanian**: 19 years (2007–2025), 37 documents — https://betterexams.ie/leaving-cert/romanian/
+- **Russian**: 23 years (2003–2025), 204 documents — https://betterexams.ie/leaving-cert/russian/
+- **Slovakian**: 19 years (2006–2025), 36 documents — https://betterexams.ie/leaving-cert/slovakian/
+- **Slovenian**: 5 years (2018–2024), 9 documents — https://betterexams.ie/leaving-cert/slovenian/
+- **Spanish**: 30 years (1996–2025), 367 documents — https://betterexams.ie/leaving-cert/spanish/
+- **Swedish**: 20 years (2005–2025), 37 documents — https://betterexams.ie/leaving-cert/swedish/
+- **Technical Drawing**: 13 years (1996–2008), 160 documents — https://betterexams.ie/leaving-cert/technical-drawing/
+- **Technology**: 17 years (2009–2025), 195 documents — https://betterexams.ie/leaving-cert/technology/
+- **Ukrainian**: 1 years (2025–2025), 2 documents — https://betterexams.ie/leaving-cert/ukrainian/
+
+## Junior Certificate (37 subjects)
+
+Index page: https://betterexams.ie/junior-cert/
+
+- **Ancient Greek**: 19 years (2001–2019), 97 documents — https://betterexams.ie/junior-cert/ancient-greek/
+- **Applied Technology**: 4 years (2022–2025), 10 documents — https://betterexams.ie/junior-cert/applied-technology/
+- **Art**: 1 years (2022–2022), 2 documents — https://betterexams.ie/junior-cert/art/
+- **Art Craft Design**: 19 years (2001–2019), 130 documents — https://betterexams.ie/junior-cert/art-craft-design/
+- **Business**: 1 years (2002–2002), 3 documents — https://betterexams.ie/junior-cert/business/
+- **Business Studies**: 23 years (2001–2025), 259 documents — https://betterexams.ie/junior-cert/business-studies/
+- **Civic Social and Political Education**: 19 years (2001–2019), 101 documents — https://betterexams.ie/junior-cert/civic-social-and-political-education/
+- **Classical Studies**: 19 years (2001–2019), 176 documents — https://betterexams.ie/junior-cert/classical-studies/
+- **Classics**: 4 years (2022–2025), 10 documents — https://betterexams.ie/junior-cert/classics/
+- **Engineering**: 4 years (2022–2025), 10 documents — https://betterexams.ie/junior-cert/engineering/
+- **English**: 23 years (2001–2025), 174 documents — https://betterexams.ie/junior-cert/english/
+- **Environ & Social Studies**: 19 years (2001–2019), 137 documents — https://betterexams.ie/junior-cert/environ-and-social-studies/
+- **French**: 23 years (2001–2025), 149 documents — https://betterexams.ie/junior-cert/french/
+- **Geography**: 23 years (2001–2025), 240 documents — https://betterexams.ie/junior-cert/geography/
+- **German**: 23 years (2001–2025), 144 documents — https://betterexams.ie/junior-cert/german/
+- **Graphics**: 4 years (2022–2025), 10 documents — https://betterexams.ie/junior-cert/graphics/
+- **Hebrew Studies**: 10 years (2001–2011), 24 documents — https://betterexams.ie/junior-cert/hebrew-studies/
+- **History**: 23 years (2001–2025), 198 documents — https://betterexams.ie/junior-cert/history/
+- **Home Economics**: 23 years (2001–2025), 143 documents — https://betterexams.ie/junior-cert/home-economics/
+- **Irish**: 23 years (2001–2025), 196 documents — https://betterexams.ie/junior-cert/irish/
+- **Irish T1**: 4 years (2022–2025), 14 documents — https://betterexams.ie/junior-cert/irish-t1/
+- **Italian**: 23 years (2001–2025), 156 documents — https://betterexams.ie/junior-cert/italian/
+- **Jewish Studies**: 9 years (2013–2023), 25 documents — https://betterexams.ie/junior-cert/jewish-studies/
+- **Latin**: 19 years (2001–2019), 112 documents — https://betterexams.ie/junior-cert/latin/
+- **Material Technology (Wood)**: 20 years (2000–2019), 171 documents — https://betterexams.ie/junior-cert/material-technology-wood/
+- **Mathematics**: 23 years (2001–2025), 338 documents — https://betterexams.ie/junior-cert/mathematics/
+- **Metalwork**: 19 years (2001–2019), 135 documents — https://betterexams.ie/junior-cert/metalwork/
+- **Music**: 23 years (2001–2025), 218 documents — https://betterexams.ie/junior-cert/music/
+- **Music**: 1 years (2011–2011), 1 documents — https://betterexams.ie/junior-cert/music/
+- **Religious Education**: 21 years (2003–2025), 115 documents — https://betterexams.ie/junior-cert/religious-education/
+- **Science**: 8 years (2001–2008), 59 documents — https://betterexams.ie/junior-cert/science/
+- **Science**: 18 years (2006–2025), 100 documents — https://betterexams.ie/junior-cert/science/
+- **Spanish**: 23 years (2001–2025), 154 documents — https://betterexams.ie/junior-cert/spanish/
+- **Technical Graphics**: 19 years (2001–2019), 165 documents — https://betterexams.ie/junior-cert/technical-graphics/
+- **Technology**: 19 years (2001–2019), 149 documents — https://betterexams.ie/junior-cert/technology/
+- **Typewriting**: 15 years (2001–2016), 66 documents — https://betterexams.ie/junior-cert/typewriting/
+- **Wood Technology**: 4 years (2022–2025), 10 documents — https://betterexams.ie/junior-cert/wood-technology/
+
+## Leaving Cert Applied (21 subjects)
+
+Index page: https://betterexams.ie/leaving-cert-applied/
+
+- **Active Leisure Studies**: 9 years (2016–2025), 36 documents — https://betterexams.ie/leaving-cert-applied/active-leisure-studies/
+- **Agriculture / Horticulture**: 9 years (2016–2025), 20 documents — https://betterexams.ie/leaving-cert-applied/agriculture-horticulture/
+- **Childcare / Community Care**: 9 years (2016–2025), 22 documents — https://betterexams.ie/leaving-cert-applied/childcare-community-care/
+- **Crafts & Design**: 9 years (2016–2025), 22 documents — https://betterexams.ie/leaving-cert-applied/crafts-and-design/
+- **Engineering**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/engineering/
+- **English and Communications**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/english-and-communications/
+- **French**: 9 years (2016–2025), 36 documents — https://betterexams.ie/leaving-cert-applied/french/
+- **Gaeilge ChumarsÃ¡ideach**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/gaeilge-chumars-ideach/
+- **German**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/german/
+- **Graphics And Construction Studies**: 9 years (2016–2025), 26 documents — https://betterexams.ie/leaving-cert-applied/graphics-and-construction-studies/
+- **Hair And Beauty**: 9 years (2016–2025), 26 documents — https://betterexams.ie/leaving-cert-applied/hair-and-beauty/
+- **Hotel / Catering & Tourism**: 9 years (2016–2025), 32 documents — https://betterexams.ie/leaving-cert-applied/hotel-catering-and-tourism/
+- **Information & Communication Tech.**: 5 years (2021–2025), 11 documents — https://betterexams.ie/leaving-cert-applied/information-and-communication-tech/
+- **Intro. to Information & Comm. Technology**: 5 years (2016–2021), 5 documents — https://betterexams.ie/leaving-cert-applied/intro-to-information-and-comm-technology/
+- **Italian**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/italian/
+- **Mathematical Applications**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/mathematical-applications/
+- **Office Admin And Customer**: 9 years (2016–2025), 19 documents — https://betterexams.ie/leaving-cert-applied/office-admin-and-customer/
+- **Sign Language**: 7 years (2016–2025), 14 documents — https://betterexams.ie/leaving-cert-applied/sign-language/
+- **Social Education**: 9 years (2016–2025), 45 documents — https://betterexams.ie/leaving-cert-applied/social-education/
+- **Spanish**: 9 years (2016–2025), 36 documents — https://betterexams.ie/leaving-cert-applied/spanish/
+- **Technology**: 9 years (2016–2025), 18 documents — https://betterexams.ie/leaving-cert-applied/technology/
+
+## API Usage
+
+Retrieve structured JSON for any subject/year:
+
+GET https://betterexams.ie/api/{cert-slug}/{subject-slug}/{year}
+
+Example: https://betterexams.ie/api/leaving-cert/mathematics/2025
+
+Response includes: certificate name, subject name, year, page URL, and categorised document list with PDF download links.
+
+To discover available subjects, use: GET https://betterexams.ie/api/{cert-slug}
+Example: https://betterexams.ie/api/leaving-cert

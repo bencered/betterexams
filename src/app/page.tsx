@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Suspense } from "react";
+import { ArrowRight } from "lucide-react";
 import AboutDialog from "./components/Dialogs/AboutDialog";
 import ContactDialog from "./components/Dialogs/ContactDialog";
 import ResourcesDialog from "./components/Dialogs/ResourcesDialog";
@@ -31,14 +31,14 @@ export default function Home() {
             </Link>
 
             <main
-                className={`min-h-screen h-full flex flex-col -mt-12 items-center p-24 lg:mt-0 transition-all duration-300
+                className={`min-h-screen h-full flex flex-col -mt-12 items-center px-6 py-12 md:p-24 lg:mt-0 transition-all duration-300
     ${aboutIsOpen || contactIsOpen || shareIsOpen || resourcesIsOpen
                         ? "blur"
                         : "blur-0"
                     }
 `}
             >
-                <h1 className="text-6xl font-bold text-center">Better Exams</h1>
+                <h1 className="text-4xl md:text-6xl font-bold text-center">Better Exams</h1>
                 <h2 className="italic text-white/70 mt-1 text-center">
                     An Alternative To Examinations.ie
                 </h2>
@@ -48,6 +48,19 @@ export default function Home() {
                     </Suspense>
                 </div>
                 <div className="flex-grow mt-14" />
+                <nav className="mt-8 text-center text-sm text-zinc-500 flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
+                    <Link href="/leaving-cert" className="inline-block py-2 text-blue-400 hover:text-blue-300 underline underline-offset-2">
+                        Leaving Cert Past Papers
+                    </Link>
+                    <span aria-hidden="true">|</span>
+                    <Link href="/junior-cert" className="inline-block py-2 text-blue-400 hover:text-blue-300 underline underline-offset-2">
+                        Junior Cert Past Papers
+                    </Link>
+                    <span aria-hidden="true">|</span>
+                    <Link href="/leaving-cert-applied" className="inline-block py-2 text-blue-400 hover:text-blue-300 underline underline-offset-2">
+                        Leaving Cert Applied
+                    </Link>
+                </nav>
                 <AboutDialog />
                 <ContactDialog />
                 <ShareDialog />

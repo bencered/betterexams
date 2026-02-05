@@ -1,0 +1,45 @@
+# Better Exams
+
+> Free access to Irish Leaving Certificate, Junior Certificate, and Leaving Cert Applied past exam papers and marking schemes, sourced from examinations.ie.
+> Full subject listing: https://betterexams.ie/llms-full.txt
+
+## About
+
+Better Exams (betterexams.ie) is a free resource for Irish secondary school students. It provides access to past papers and marking schemes for the Leaving Certificate, Junior Certificate, and Leaving Cert Applied examinations. All documents are sourced directly from the State Examinations Commission (examinations.ie).
+
+## Content
+
+- 64 Leaving Certificate subjects with past papers from 1995 to 2025
+- 37 Junior Certificate subjects with past papers from 2000 to 2025
+- 21 Leaving Cert Applied subjects with past papers from 2001 to 2025
+- 13,832+ total documents including exam papers, marking schemes, and deferred exams
+- All documents are free to access and download
+
+## Features
+
+- Side-by-side exam paper and marking scheme viewer (desktop): https://betterexams.ie/v2
+- Mobile-friendly subject browser with search
+- PDF proxy for fast, reliable document access
+- JSON API for programmatic access
+
+## Key Pages
+
+- https://betterexams.ie/ - Homepage with search functionality
+- https://betterexams.ie/leaving-cert/ - All Leaving Certificate subjects
+- https://betterexams.ie/junior-cert/ - All Junior Certificate subjects
+- https://betterexams.ie/leaving-cert-applied/ - All Leaving Cert Applied subjects
+- https://betterexams.ie/leaving-cert/mathematics/ - Mathematics past papers (example subject page)
+- https://betterexams.ie/leaving-cert/mathematics/2025 - Mathematics 2025 papers (example year page)
+
+## API
+
+- JSON API: https://betterexams.ie/api/{cert-slug}/{subject-slug}/{year}
+- Example: https://betterexams.ie/api/leaving-cert/mathematics/2025
+- Returns structured data with certificate name, subject name, year, page URL, and document list with PDF download links
+
+## URL Structure
+
+- /{cert}/ - Certificate index (leaving-cert, junior-cert, or leaving-cert-applied)
+- /{cert}/{subject}/ - Subject index with all available years
+- /{cert}/{subject}/{year} - Year page with all documents
+- /pdf/{cert}/{subject}/{year}/{category}/{filename} - Direct PDF access

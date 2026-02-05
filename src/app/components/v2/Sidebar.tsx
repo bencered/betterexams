@@ -1,5 +1,5 @@
 'use client'
-import { useState, Suspense } from "react";
+import { Suspense, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useDialogs } from "../../contexts/DialogContext";
 import { Button } from "@/components/ui/button";

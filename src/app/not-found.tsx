@@ -1,5 +1,11 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { Home, Search } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Page Not Found | Better Exams',
+  robots: { index: false, follow: false },
+}
 
 export default function NotFound() {
   return (
@@ -47,7 +53,7 @@ export default function NotFound() {
               <Link
                 key={subject}
                 href={`/leaving-cert/${slug}`}
-                className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 rounded text-sm transition-colors"
+                className="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 rounded text-sm transition-colors"
               >
                 {subject}
               </Link>
@@ -59,9 +65,9 @@ export default function NotFound() {
       {/* Footer */}
       <div className="mt-16 text-center text-zinc-500 text-sm">
         <div className="flex items-center justify-center gap-4">
-          <Link href="/" className="text-blue-400 hover:underline">Home</Link>
+          <Link href="/" className="inline-block py-2 text-blue-400 hover:underline">Home</Link>
           <span>•</span>
-          <a href="https://github.com/General-Mudkip/betterexams" target="_blank" className="text-green-400 hover:underline">GitHub</a>
+          <a href="https://github.com/General-Mudkip/betterexams" target="_blank" className="inline-block py-2 text-green-400 hover:underline">GitHub</a>
         </div>
       </div>
     </main>

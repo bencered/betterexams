@@ -91,9 +91,11 @@ function ResourcesDialog() {
               Feel free to contribute any links via the form below.
             </span>
             <div className="mt-6">
-              <ReactMarkdown className="prose prose-p:-mt-4 prose-hr:my-6 prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h3:text-lg prose-h3:font-bold prose-a:font-normal prose-a:text-white hover:prose-a:text-slate-300 prose-invert">
-                {markdownText}
-              </ReactMarkdown>
+              <div className="prose prose-p:-mt-4 prose-hr:my-6 prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h3:text-lg prose-h3:font-bold prose-a:font-normal prose-a:text-white hover:prose-a:text-slate-300 prose-invert">
+                <ReactMarkdown>
+                  {markdownText}
+                </ReactMarkdown>
+              </div>
             </div>
 
             <form className="mt-6" onSubmit={handleFormSubmit}>
