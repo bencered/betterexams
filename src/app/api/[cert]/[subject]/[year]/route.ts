@@ -8,6 +8,7 @@ import {
   categoryCodeToSlug,
   getExamData,
   getSubjectName,
+  slugifyDocInCategory,
   type CertCode,
 } from "@/lib/exam-utils";
 
@@ -52,7 +53,7 @@ export async function GET(
     documents[categoryCode] = docs.map((doc) => ({
       details: doc.details,
       filename: doc.url,
-      pdfUrl: `${BASE_URL}/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${doc.url}`,
+      pdfUrl: `${BASE_URL}/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${slugifyDocInCategory(doc, docs)}`,
     }));
   }
 

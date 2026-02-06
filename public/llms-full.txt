@@ -40,7 +40,7 @@ Index page: https://betterexams.ie/leaving-cert/
 - **Estonian**: 19 years (2006–2025), 35 documents — https://betterexams.ie/leaving-cert/estonian/
 - **Finnish**: 19 years (2005–2025), 33 documents — https://betterexams.ie/leaving-cert/finnish/
 - **French**: 31 years (1995–2025), 294 documents — https://betterexams.ie/leaving-cert/french/
-- **Gaeilge ChumarsÃ¡ideach**: 1 years (2006–2006), 1 documents — https://betterexams.ie/leaving-cert/gaeilge-chumars-ideach/
+- **Gaeilge Chumarsáideach**: 1 years (2006–2006), 1 documents — https://betterexams.ie/leaving-cert/gaeilge-chumars-ideach/
 - **Geography**: 30 years (1996–2025), 307 documents — https://betterexams.ie/leaving-cert/geography/
 - **German**: 31 years (1995–2025), 291 documents — https://betterexams.ie/leaving-cert/german/
 - **Hebrew Studies**: 24 years (1996–2022), 62 documents — https://betterexams.ie/leaving-cert/hebrew-studies/
@@ -133,7 +133,7 @@ Index page: https://betterexams.ie/leaving-cert-applied/
 - **Engineering**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/engineering/
 - **English and Communications**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/english-and-communications/
 - **French**: 9 years (2016–2025), 36 documents — https://betterexams.ie/leaving-cert-applied/french/
-- **Gaeilge ChumarsÃ¡ideach**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/gaeilge-chumars-ideach/
+- **Gaeilge Chumarsáideach**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/gaeilge-chumars-ideach/
 - **German**: 9 years (2016–2025), 27 documents — https://betterexams.ie/leaving-cert-applied/german/
 - **Graphics And Construction Studies**: 9 years (2016–2025), 26 documents — https://betterexams.ie/leaving-cert-applied/graphics-and-construction-studies/
 - **Hair And Beauty**: 9 years (2016–2025), 26 documents — https://betterexams.ie/leaving-cert-applied/hair-and-beauty/

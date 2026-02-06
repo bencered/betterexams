@@ -15,6 +15,7 @@ import {
   getActiveSubjectsForCert,
   getSubjectName,
   getDocCountForYear,
+  slugifyDocInCategory,
   type CertCode,
 } from "@/lib/exam-utils";
 
@@ -196,7 +197,7 @@ export default async function SubjectYearPage({
               {docs.map((doc) => (
                 <li key={doc.url}>
                   <a
-                    href={`/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${doc.url}`}
+                    href={`/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${slugifyDocInCategory(doc, docs)}`}
                     className="inline-block py-1.5 text-blue-400 hover:text-blue-300 underline underline-offset-2"
                   >
                     {doc.details}

@@ -92,7 +92,7 @@ function PaperCard({ type, subject, paperName, year, url }: PaperCardProps) {
                 {determineCategoryName(type)} • {subject}
               </span>
             </h3>
-            <h1 className="text-2xl font-bold mt-1">{paperName}</h1>
+            <h2 className="text-2xl font-bold mt-1">{paperName}</h2>
           </div>
 
           <div>

@@ -6,6 +6,7 @@ import {
   getActiveSubjectsForCert,
   getAllSubjectYears,
   getExamData,
+  slugifyDocInCategory,
   type CertCode,
 } from "@/lib/exam-utils";
 
@@ -56,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           for (const doc of docs) {
             if (!doc.url.toLowerCase().endsWith(".pdf")) continue;
             entries.push({
-              url: `${BASE_URL}/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${doc.url}`,
+              url: `${BASE_URL}/pdf/${certSlug}/${subjectSlug}/${year}/${catSlug}/${slugifyDocInCategory(doc, docs)}`,
             });
           }
         }

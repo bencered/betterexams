@@ -14,7 +14,7 @@ function ShareDialog() {
   const { shareIsOpen, setShareIsOpen } = useDialogs();
   const { selectionArray, examPaperList } = useExam();
 
-  let shareUrl = `https://www.betterexams.ie?cert=${selectionArray[0]}&subject=${selectionArray[1]}&year=${selectionArray[2]}&lang=${selectionArray[3]}&level=${selectionArray[4]}`;
+  let shareUrl = `https://betterexams.ie?cert=${selectionArray[0]}&subject=${selectionArray[1]}&year=${selectionArray[2]}&lang=${selectionArray[3]}&level=${selectionArray[4]}`;
 
   function determineCategoryName(catName: string) {
     let title: string;

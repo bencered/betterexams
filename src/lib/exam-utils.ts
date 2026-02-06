@@ -127,6 +127,30 @@ function getSubjectName(subjectId: string): string {
   return typedData.subNumsToNames[subjectId] ?? "Unknown";
 }
 
+function slugifyDocInCategory(
+  doc: { details: string; url: string },
+  categoryDocs: { details: string; url: string }[]
+): string {
+  const ext = doc.url.split(".").pop()?.toLowerCase() ?? "pdf";
+  const base = slugify(doc.details);
+  const sameSlugDocs = categoryDocs.filter((d) => slugify(d.details) === base);
+  if (sameSlugDocs.length <= 1) return `${base}.${ext}`;
+  const idx = sameSlugDocs.indexOf(doc);
+  return idx <= 0 ? `${base}.${ext}` : `${base}-${idx + 1}.${ext}`;
+}
+
+function resolveDocSlug(
+  categoryDocs: { details: string; url: string }[],
+  docSlug: string
+): { details: string; url: string } | undefined {
+  // Try exact match first (most docs), then indexed match
+  for (let i = 0; i < categoryDocs.length; i++) {
+    const slug = slugifyDocInCategory(categoryDocs[i], categoryDocs);
+    if (slug === docSlug) return categoryDocs[i];
+  }
+  return undefined;
+}
+
 function getUpstreamPdfUrl(
   categoryCode: string,
   year: string,
@@ -237,6 +261,8 @@ export {
   getSubjectsForCert,
   getActiveSubjectsForCert,
   getSubjectName,
+  slugifyDocInCategory,
+  resolveDocSlug,
   getUpstreamPdfUrl,
   getContentType,
   getDocCountForYear,

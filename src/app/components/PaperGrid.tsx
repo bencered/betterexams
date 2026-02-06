@@ -181,7 +181,7 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
             {
               years.map((yr: string) => (
                 <div className="flex flex-col flex-wrap" key={yr}>
-                  <h1 className="text-white text-3xl ml-4 mt-6">{yr}</h1>
+                  <h2 className="text-white text-3xl ml-4 mt-6">{yr}</h2>
                   <hr />
                   <div className=" mt-8 justify-center">
                     {
@@ -233,7 +233,7 @@ function PaperGrid({ examPaperList }: PaperGridProps) {
             {
               years.map((yr: string) => (
                 <div className="flex flex-col flex-wrap" key={yr}>
-                  <h1 className="text-white text-3xl ml-4 mt-6">{yr}</h1>
+                  <h2 className="text-white text-3xl ml-4 mt-6">{yr}</h2>
                   <hr />
                   <div className="flex flex-row flex-wrap gap-8 mt-8 justify-center">
                     {
