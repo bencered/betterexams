@@ -67,7 +67,14 @@ export async function GET(
   const upstreamUrl = getUpstreamPdfUrl(categoryCode, year, filename);
   let upstreamRes: Response;
   try {
-    upstreamRes = await fetch(upstreamUrl);
+    upstreamRes = await fetch(upstreamUrl, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "Referer": "https://www.examinations.ie/",
+        "Accept": "application/pdf,*/*",
+      },
+    });
   } catch {
     return NextResponse.json(
       { error: "Upstream fetch failed" },
