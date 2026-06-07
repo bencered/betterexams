@@ -12,6 +12,7 @@ import {
 interface PaperOption {
   label: string;
   examUrl: string;
+  isDeferred: boolean;
   markingSchemeUrl?: string;
   audioUrl?: string;
 }
@@ -27,13 +28,19 @@ export default function PaperTypeSelector() {
     selectionArray
   } = useExam();
 
-  // Extract exam papers only (not marking schemes)
-  const examPapers = examPaperList.filter(paper => paper[0] === 'exampapers');
+  const [, , , lang, level] = selectionArray;
+
+  // Extract exam papers and deferred exam papers (not marking schemes)
+  const examPapers = examPaperList.filter(
+    paper => paper[0] === 'exampapers' || paper[0] === 'deferredexams'
+  );
 
   // Group papers by type (Paper One, Paper Two, etc.)
   const papersByType = examPapers.reduce((acc: { [key: string]: PaperOption }, paper) => {
+    const category = paper[0];
     const details = paper[2];
     const url = paper[4];
+    const isDeferred = category === 'deferredexams';
 
     // Extract paper type (Paper One, Paper Two, Foundation Level, etc.)
     let paperType = '';
@@ -52,14 +59,18 @@ export default function PaperTypeSelector() {
     }
 
     // Only add if it matches current level and language
-    const [cert, subject, year, lang, level] = selectionArray;
     const matchesLevel = details.includes(level);
     const matchesLang = details.includes(lang);
 
-    if (matchesLevel && matchesLang && paperType && !acc[paperType]) {
-      acc[paperType] = {
-        label: paperType,
+    // Deferred papers get their own option so they don't collide with the
+    // regular paper of the same type.
+    const optionKey = isDeferred ? `${paperType} (Deferred)` : paperType;
+
+    if (matchesLevel && matchesLang && paperType && !acc[optionKey]) {
+      acc[optionKey] = {
+        label: optionKey,
         examUrl: url,
+        isDeferred,
       };
     }
 
@@ -75,17 +86,18 @@ export default function PaperTypeSelector() {
     const selectedPaper = paperOptions[index];
     setCurrentExamUrl(selectedPaper.examUrl);
 
-    // Find marking scheme that matches current level and language
-    const [cert, subject, year, lang, level] = selectionArray;
+    // Find marking scheme that matches current level and language. Deferred
+    // papers are paired with the deferred marking scheme.
+    const markingSchemeCategory = selectedPaper.isDeferred
+      ? 'deferredmarkingschemes'
+      : 'markingschemes';
     const markingScheme = examPaperList.find(paper =>
-      paper[0] === 'markingschemes' &&
+      paper[0] === markingSchemeCategory &&
       paper[2].includes(level) &&
       paper[2].includes(lang)
     );
 
-    if (markingScheme) {
-      setCurrentMarkingSchemeUrl(markingScheme[4]);
-    }
+    setCurrentMarkingSchemeUrl(markingScheme ? markingScheme[4] : '');
 
     // Find audio file if exists
     const audioFile = examPaperList.find(paper =>
