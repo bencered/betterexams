@@ -13,7 +13,7 @@ function AboutDialog() {
 
   return (
     <Dialog open={aboutIsOpen} onOpenChange={setAboutIsOpen}>
-      <DialogContent className="max-w-[32rem] p-8 rounded-2xl border-4 border-white bg-zinc-950 text-white">
+      <DialogContent className="max-w-[32rem] p-8 rounded-2xl border-2 border-zinc-800 bg-zinc-950 text-white">
         <DialogHeader>
           <DialogTitle className="text-3xl font-bold">About</DialogTitle>
           <DialogDescription className="text-white">
@@ -27,24 +27,18 @@ function AboutDialog() {
               >
                 examinations.ie
               </a>{" "}
-              website, which is an arguable affront to God. (It proudly
+              website, which is *really* a struggle to use. (It proudly
               displays an e-Government award from 2006. It is as old as I am.)
-            </p>
-            <h1 className="font-bold mt-4">Why?</h1>
-            <p className="indent-5">
-              The goal from the get-go was to, firstly, improve upon my web-dev
-              skills, and secondly, to save those precious seconds you spend
-              every day on that hellish site.
             </p>
             <h1 className="font-bold mt-4">Who?</h1>
             <p className="indent-5">
               This website was made by{" "}
               <a
-                href="https://www.mudkip.live"
+                href="https://www.bence.red"
                 target="_blank"
                 className="underline hover:decoration-2"
               >
-                Bence R
+                Bence Redmond
               </a>
               , with the initial inspiration and elements of the design coming
               from Thomas Forbes&apos; &ldquo;
